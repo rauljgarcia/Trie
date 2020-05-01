@@ -11,8 +11,6 @@ Project has following folder tree
 │   └── main.cpp  
 ├── build  
 ├── code  
-│   ├── Node.cpp  
-│   └── Node.h
 │   └── Trie.cpp
 │   └── Trie.h  
 └── tests  

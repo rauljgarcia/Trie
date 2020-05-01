@@ -6,6 +6,8 @@
         "memory": "cpp",
         "iosfwd": "cpp",
         "map": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "__node_handle": "cpp",
+        "iostream": "cpp"
     }
 }
