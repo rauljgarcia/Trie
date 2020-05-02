@@ -1,25 +1,30 @@
+#include <string>
+#include <vector>
 #include <iostream>
 #include "../code/Trie.h"
+
 
 using namespace std;
 
 int main(){
     Trie myTrie;
     
-    string keys[] = {"abc", "abgl", "cdf"};
-
+    vector<string> words;
+    words.insert(words.end(), {"abc", "cde"});
     shared_ptr<trie>root = nullptr;
-    for(int i = 0; i<3; i++){
-        myTrie.insert(root,keys[i]);
+    
+    for(int i = 0; i<words.size(); i++){
+        myTrie.insert(root,words[i]);
     }
     
-    // myTrie.insert(root,"abc");
-    // myTrie.insert(root,"abgl");
-    // myTrie.insert(root,"cdf");
-    // myTrie.insert(root,"abcd");
-    // myTrie.insert(root,"lmn");
+    myTrie.searchFull(root, "abd");
 
-   
+    myTrie.searchSub(root, "ce");
+
+    if(myTrie.deleteWord(root, "abc")){
+        cout<<"abc sucessfully deleted"<<endl;
+    } else {
+        cout<<"not present"<<endl;
+    }
     return 0;
 }
-

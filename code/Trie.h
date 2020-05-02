@@ -8,9 +8,9 @@
 using namespace std;
 
 struct trie {
-  char c;
+  char letter;
   bool isLeaf;
-  unordered_map<char, shared_ptr<trie>>links;
+  unordered_map<char, shared_ptr<trie>>children;
 };
 
 class Trie {
@@ -21,10 +21,25 @@ public:
   ~Trie();
 
 
-  //creates new node with map and defaults isLeaf to false
+  //creates new node with empty map, isLeaf defaults to false
   shared_ptr<trie>CreateNode();
 
-  void insert(shared_ptr<trie>& root, string str);
+  //iteratively creates new trie from an array of strings
+  void insert(shared_ptr<trie>& root, string word);
+
+  //iterative search for a full string in the trie
+  bool searchFull(shared_ptr<trie>& root, string word);
+
+  //iterative search for a substring in the trie
+  bool searchSub(shared_ptr<trie>& root, string word);
+
+  //checks if a node has no children, return true
+  bool nodeEmpty(shared_ptr<trie>& curr);
+
+  //recursive deletion of a given string in the trie
+  bool deleteWord(shared_ptr<trie>&root, string word);
+
+  bool delWordHelper(shared_ptr<trie>& curr, string& word);
 
 private:
   shared_ptr<trie>root;
