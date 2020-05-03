@@ -18,7 +18,7 @@ shared_ptr<trie> Trie::CreateNode(){
 void Trie::insert(shared_ptr<trie>& root, string word){
     if(root == nullptr){
         root = CreateNode();
-        // cout<<"root"<<endl;
+        cout<<"root"<<endl;
     }
 
     shared_ptr<trie>curr = root;
@@ -26,13 +26,13 @@ void Trie::insert(shared_ptr<trie>& root, string word){
         if(curr->children.find(it) == curr->children.end()){
             shared_ptr<trie> node = CreateNode();
             node->letter = it;
-            // cout<<"new node char = "<<node->letter<<" ->"<<endl;
+            cout<<"new node char = "<<node->letter<<" ->"<<endl;
             curr->children[it] = node;
         }
         curr = curr->children[it];
     }
     curr->isLeaf = true;
-    // cout<<"leaf"<<endl;
+    cout<<"leaf"<<endl;
     return;
 }
 
@@ -45,7 +45,7 @@ bool Trie::searchFull(shared_ptr<trie>& root, string word){
     for(int i=0; i<word.length(); i++){
         curr = curr->children[word[i]];
         if(curr == nullptr){
-            // cout<<"false"<<endl;
+            cout<<"false"<<endl;
             return false;
         }
     }
