@@ -9,7 +9,6 @@ Project has following folder tree
 ├── README.md  
 ├── app  
 │   └── main.cpp  
-├── build  
 ├── code  
 │   └── Trie.cpp
 │   └── Trie.h  
