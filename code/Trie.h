@@ -8,12 +8,15 @@
 using namespace std;
 
 struct trie {
-  char letter;
-  bool isLeaf;
+  char letter = 0;
+  bool isLeaf = false;
   unordered_map<char, shared_ptr<trie>>children;
 };
 
 class Trie {
+private:
+  shared_ptr<trie>root;
+
 public:
   Trie();
   //using shared_pointers, so not keeping track of
@@ -25,24 +28,25 @@ public:
   shared_ptr<trie>CreateNode();
 
   //iteratively creates new trie from an array of strings
-  void insert(shared_ptr<trie>& root, string word);
+  void insert(string word);
 
   //iterative search for a full string in the trie
-  bool searchFull(shared_ptr<trie>& root, string word);
+  bool searchFull(string word);
 
   //iterative search for a substring in the trie
   bool searchSub(shared_ptr<trie>& root, string word);
+
+  bool search(string word);
 
   //checks if a node has no children, return true
   bool nodeEmpty(shared_ptr<trie>& curr);
 
   //recursive deletion of a given string in the trie
-  bool deleteWord(shared_ptr<trie>&root, string word);
+  bool deleteWord(string& word);
 
-  bool delWordHelper(shared_ptr<trie>& curr, string& word);
+  bool delWordHelper(string& word, shared_ptr<trie>& root);
 
-private:
-  shared_ptr<trie>root;
+  shared_ptr<trie>GetRoot();
 
 };
 

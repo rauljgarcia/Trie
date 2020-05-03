@@ -10,21 +10,24 @@ int main(){
     Trie myTrie;
     
     vector<string> words;
-    words.insert(words.end(), {"abc", "cde"});
-    shared_ptr<trie>root = nullptr;
+    cout<<"Enter words into the Trie: "<<endl;
+    words.insert(words.end(), {"rabbit", "day", "radio"});
     
     for(int i = 0; i<words.size(); i++){
-        myTrie.insert(root,words[i]);
+        myTrie.insert(words[i]);
     }
     
-    myTrie.searchFull(root, "abd");
+    myTrie.search("ay");
 
-    myTrie.searchSub(root, "ce");
+    myTrie.searchFull("abbit");
 
-    if(myTrie.deleteWord(root, "abc")){
-        cout<<"abc sucessfully deleted"<<endl;
+    // myTrie.searchSub(root, "da");
+    string word = "ra";
+    if(myTrie.deleteWord(word)){
+        cout<<word<<" has sucessfully been deleted from Trie"<<endl;
     } else {
-        cout<<"not present"<<endl;
+        cout<<word<<" is not present in Trie"<<endl;
     }
+
     return 0;
 }
