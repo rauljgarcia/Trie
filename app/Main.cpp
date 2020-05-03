@@ -9,17 +9,21 @@ using namespace std;
 int main(){
     Trie myTrie;
     
+    // string strings;
+    // vector<string> words;
+    // cout<<"Enter words into the Trie (separated by commas): "<<endl;
+    // cin>>strings;
+    // words.insert(words.end(), {strings});
+    // words.insert(words.end(), {"hello", "goodbye", "apple", "banana"});
     vector<string> words;
-    cout<<"Enter words into the Trie: "<<endl;
     words.insert(words.end(), {"rabbit", "day", "radio"});
-    
     for(int i = 0; i<words.size(); i++){
         myTrie.insert(words[i]);
     }
     
-    myTrie.search("ay");
+    myTrie.search("rab");
 
-    myTrie.searchFull("abbit");
+    // myTrie.searchFull("abbit");
 
     // myTrie.searchSub(root, "da");
     string word = "ra";

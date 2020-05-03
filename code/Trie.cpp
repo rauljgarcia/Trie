@@ -4,6 +4,7 @@ using namespace std;
 
 Trie::Trie(){
     root = shared_ptr<trie>(new trie);
+    cout<<"root"<<endl;
 }
 
 Trie::~Trie(){
@@ -21,6 +22,8 @@ void Trie::insert(string word){
     for(int i =0; i<word.size();i++){
         if(curr->children[word[i]] == nullptr){
             curr->children[(word[i])] = CreateNode();
+            
+            
         }
         curr = (curr->children[word[i]]);
     }
