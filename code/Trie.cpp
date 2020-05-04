@@ -3,8 +3,7 @@
 using namespace std;
 
 Trie::Trie(){
-    root = shared_ptr<trie>(new trie);
-    cout<<"root"<<endl;
+    root = CreateNode();
 }
 
 Trie::~Trie(){
@@ -17,36 +16,20 @@ shared_ptr<trie> Trie::CreateNode(){
 }
 
 void Trie::insert(string word){
+    if(searchFull(word) == true){
+        cout<<"The string'"<<word<<"' already exists in the Trie"<<endl;
+                return;
+            }
+
     shared_ptr<trie>curr = root;
 
     for(int i =0; i<word.size();i++){
         if(curr->children[word[i]] == nullptr){
             curr->children[(word[i])] = CreateNode();
-            
-            
         }
         curr = (curr->children[word[i]]);
     }
     curr->isLeaf = true;
-}
-
-bool Trie::search(string word){
-    if(root == nullptr){
-        return false;
-        }
-
-    shared_ptr<trie>curr = root;
-    for(int i = 0; i<word.size(); i++){
-        char ch = word.at(i);
-        shared_ptr<trie> node = curr->children[(ch)];
-        if(node == nullptr){
-            cout<<"false"<<endl;
-            return false;
-        }
-        curr = node;
-    }
-    cout<<"true"<<endl;
-    return curr->isLeaf;
 }
 
 bool Trie::searchFull(string word){
@@ -57,44 +40,47 @@ bool Trie::searchFull(string word){
     
     for(auto it : word){
         if(!curr->children[it]){
-            cout<<"false"<<endl;
             return false;
         } else {
             curr = curr->children[it];
         }
     }
-    cout<<"true"<<endl;
-    return curr->isLeaf;
+    
+    if(curr->isLeaf){
+        return true;
+        } else {
+            return false;
+            }
 }
 
-bool Trie::searchSub(shared_ptr<trie>& root, string word){
-    // if(root == nullptr){
-    //     return false;
-    // }
+bool Trie::searchPrefix(string pre){
+    if(root == nullptr){
+        return false;
+        }
 
-    // shared_ptr<trie>curr = root;
-    // for(int i=0; i<word.length(); i++){
-    //     curr = curr->children[word[i]];
-    //     if(curr == nullptr){
-    //         cout<<"false"<<endl;
-    //         return false;
-    //     }
-    // }
-    // cout<<"true"<<endl;
-    // return true;
+    shared_ptr<trie>curr = root;
+    for(int i = 0; i<pre.size(); i++){
+        char ch = pre.at(i);
+        shared_ptr<trie> node = curr->children[(ch)];
+        if(node == nullptr){
+            return false;
+        }
+        curr = node;
+    }
+    return true;
 }
 
+//helper function for delWordHelper
 bool Trie::nodeEmpty(shared_ptr<trie>& curr){
     for(auto it: curr->children){
     if(it.second == nullptr){
-        cout<<"true"<<endl;
         return true;
-        }
+        } 
     }
-    cout<<"false"<<endl;
     return false;
 }
 
+//helper function for deleteWord
 bool Trie::delWordHelper(string& word, shared_ptr<trie>& root){
     if(root == nullptr){
         return false;

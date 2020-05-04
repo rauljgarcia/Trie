@@ -9,6 +9,7 @@
         "string": "cpp",
         "__node_handle": "cpp",
         "iostream": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "ostream": "cpp"
     }
 }

@@ -31,23 +31,24 @@ public:
   void insert(string word);
 
   //iterative search for a full string in the trie
+  //full string ends in a leaf
   bool searchFull(string word);
 
-  //iterative search for a substring in the trie
-  bool searchSub(shared_ptr<trie>& root, string word);
+  //interative search for a prefix in the trie
+  //prefix starts at root but doesn't nec end in a leaf
+  bool searchPrefix(string pre);
 
-  bool search(string word);
-
-  //checks if a node has no children, return true
+  //helper function to delWordHelper 
+  //checks if a node has no children, returns true
   bool nodeEmpty(shared_ptr<trie>& curr);
 
-  //recursive deletion of a given string in the trie
-  bool deleteWord(string& word);
-
+  //helper function to deleteWord
+  //recurses through the trie from the root by each char in the string
+  //if string doesn't end in leaf returns false, as it's not a full string
   bool delWordHelper(string& word, shared_ptr<trie>& root);
 
-  shared_ptr<trie>GetRoot();
-
+  //deletes a given full string in the trie
+  bool deleteWord(string& word);
 };
 
 #endif  // TRIE_H__
