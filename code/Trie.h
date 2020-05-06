@@ -38,6 +38,10 @@ public:
   //prefix starts at root but doesn't nec end in a leaf
   bool searchPrefix(string pre);
 
+  //interative search for a prefix in the trie
+  //prefix starts at root returns true if string is exists and ends with leaf
+  bool searchSuffix(string sufx);
+
   //helper function to delWordHelper 
   //checks if a node has no children, returns true
   bool nodeEmpty(shared_ptr<trie>& curr);

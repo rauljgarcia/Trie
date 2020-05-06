@@ -1,7 +1,7 @@
 # Trie
-An implemenation of a prefix tree, or trie, in C++. 
+This is an implemenation of a prefix tree, or trie, in C++. 
 
-Project has following folder tree
+The project has following folder tree
 
 .  
 ├── CMakeLists.txt  

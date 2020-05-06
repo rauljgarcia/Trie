@@ -70,6 +70,10 @@ bool Trie::searchPrefix(string pre){
     return true;
 }
 
+bool Trie::searchPrefix(string pre){
+    return true;
+}
+
 //helper function for delWordHelper
 bool Trie::nodeEmpty(shared_ptr<trie>& curr){
     for(auto it: curr->children){
